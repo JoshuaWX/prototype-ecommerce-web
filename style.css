@@ -179,7 +179,7 @@ button {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 1002;
   background: var(--header-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -395,25 +395,12 @@ button {
 /* Mobile Menu */
 .mobile-menu {
   display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--bg-secondary);
-  z-index: 999;
-  padding: 100px 24px 40px;
-  transform: translateX(100%);
-  opacity: 0;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.3s ease;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-menu.open {
   transform: translateX(0);
   opacity: 1;
+  visibility: visible;
 }
 
 .mobile-nav-list {
@@ -1556,6 +1543,22 @@ button {
 
   .mobile-menu {
     display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-secondary);
+    z-index: 1001;
+    padding: 100px 24px 40px;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease,
+                visibility 0.4s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* Logo — hide separator on smaller tablets */
