@@ -43,19 +43,34 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ----------------------------------------------------------
      2. Mobile Menu Toggle
   ---------------------------------------------------------- */
+  var scrollPosition = 0;
+
+  function openMobileMenu() {
+    scrollPosition = window.pageYOffset;
+    mobileMenu.classList.add("open");
+    hamburgerBtn.classList.add("active");
+    hamburgerBtn.setAttribute("aria-expanded", "true");
+    mobileMenu.setAttribute("aria-hidden", "false");
+    document.body.classList.add("menu-open");
+    document.body.style.top = "-" + scrollPosition + "px";
+  }
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove("open");
+    hamburgerBtn.classList.remove("active");
+    hamburgerBtn.setAttribute("aria-expanded", "false");
+    mobileMenu.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("menu-open");
+    document.body.style.top = "";
+    window.scrollTo(0, scrollPosition);
+  }
+
   function toggleMobileMenu() {
     var isOpen = mobileMenu.classList.contains("open");
-
     if (isOpen) {
-      mobileMenu.classList.remove("open");
-      hamburgerBtn.classList.remove("active");
-      hamburgerBtn.setAttribute("aria-expanded", "false");
-      mobileMenu.setAttribute("aria-hidden", "true");
+      closeMobileMenu();
     } else {
-      mobileMenu.classList.add("open");
-      hamburgerBtn.classList.add("active");
-      hamburgerBtn.setAttribute("aria-expanded", "true");
-      mobileMenu.setAttribute("aria-hidden", "false");
+      openMobileMenu();
     }
   }
 
@@ -67,12 +82,27 @@ document.addEventListener("DOMContentLoaded", function () {
   var mobileLinks = document.querySelectorAll(".mobile-nav-link");
   mobileLinks.forEach(function (link) {
     link.addEventListener("click", function () {
-      mobileMenu.classList.remove("open");
-      hamburgerBtn.classList.remove("active");
-      hamburgerBtn.setAttribute("aria-expanded", "false");
-      mobileMenu.setAttribute("aria-hidden", "true");
+      closeMobileMenu();
     });
   });
+
+  /* Close mobile menu on Escape key */
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && mobileMenu && mobileMenu.classList.contains("open")) {
+      closeMobileMenu();
+    }
+  });
+
+  /* Close mobile menu when resizing above mobile breakpoint */
+  var resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      if (window.innerWidth > 768 && mobileMenu && mobileMenu.classList.contains("open")) {
+        closeMobileMenu();
+      }
+    }, 150);
+  }, { passive: true });
 
   /* ----------------------------------------------------------
      3. Dark / Light Mode Toggle
@@ -228,7 +258,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* Close modal with Escape key */
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeQuickView();
+    if (e.key === "Escape" && modal && modal.classList.contains("active")) {
+      closeQuickView();
+    }
   });
 
   /* ----------------------------------------------------------
@@ -325,9 +357,9 @@ document.addEventListener("DOMContentLoaded", function () {
       duration: 700,
       easing: "ease-out-cubic",
       once: true,
-      offset: 80,
+      offset: 60,
       disable: function () {
-        return window.innerWidth < 480;
+        return window.innerWidth < 768;
       }
     });
   }
