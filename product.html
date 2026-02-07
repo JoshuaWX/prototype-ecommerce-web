@@ -1,265 +1,429 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Products - Wardrobe</title>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Products — Wardrobe | Fashion Trends</title>
+  <link rel="icon" type="image/png" href="logo-white.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <link rel="stylesheet" href="style.css" />
-  
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <div class="navbar">
-        <div class="logo">
-          <a href="index.html">
-            <img src="logo.png" alt="" width="125px"
-          /></a>
-        </div>
-        <nav>
-          <ul id="MenuItems">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="product.html">Products</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a href="account.html">Account</a></li>
-          </ul>
-        </nav>
-        <a href="cart.html"
-          ><img src="cart.png" alt="" width="30px" height="30px"
-        /></a>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="Wardrobe Home">
+        <img src="logo-white.png" alt="Wardrobe Logo" class="logo-img" />
+        <span class="logo-text">Wardrobe</span>
+        <span class="logo-separator">|</span>
+        <span class="logo-tagline">Fashion Trends</span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="product.html" class="nav-link active">Products</a></li>
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+          <li><a href="account.html" class="nav-link">Account</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+        <a href="cart.html" class="cart-icon" aria-label="Shopping cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" type="button">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
       </div>
     </div>
-    <div class="small-container">
-      <div class="row row-2">
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+        <li><a href="product.html" class="mobile-nav-link active">Products</a></li>
+        <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+        <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+        <li><a href="account.html" class="mobile-nav-link">Account</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Products Content -->
+  <section class="section page-padding">
+    <div class="container">
+      <div class="row-2">
         <h2>All Products</h2>
-        <select name="" id="">
+        <select aria-label="Sort products">
           <option value="">Default Sorting</option>
-          <option value="">Sort by Price</option>
-          <option value="">Sort by Popularity</option>
-          <option value="">Sort by Rating</option>
-          <option value="">Sort by sales</option>
+          <option value="price-low">Sort by Price: Low to High</option>
+          <option value="price-high">Sort by Price: High to Low</option>
+          <option value="popularity">Sort by Popularity</option>
+          <option value="rating">Sort by Rating</option>
         </select>
       </div>
-      <div class="row">
-        <div class="col-4">
-          <img src="product-1.jpg" alt="" />
-          <h4>Fashion Trends</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
+
+      <div class="product-grid">
+        <div class="product-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="product-image-wrap">
+            <img src="product-1.jpg" alt="Elegance Couture" loading="lazy" />
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+            <span class="product-badge">New</span>
           </div>
-          <p>$50.00</p>
-        </div>
-         <div class="col-4">
-          <img src="product-2.jpg" alt="" />
-          <h4>Fashion Trends</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <i class="fa fa-star-o"></i>
+          <div class="product-info">
+            <h4 class="product-name">Elegance Couture</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+              <span class="rating-count">(24)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$50.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
           </div>
-          <p>$50.00</p>
         </div>
 
-        <div class="col-4">
-          <img src="product-3.jpg" alt="" />
-          <h4>Fashion Trends</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
+        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="product-image-wrap">
+            <img src="product-2.jpg" alt="Noir Classic Blazer" loading="lazy" />
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
           </div>
-          <p>$50.00</p>
+          <div class="product-info">
+            <h4 class="product-name">Noir Classic Blazer</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i>
+              <span class="rating-count">(18)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$75.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
         </div>
-        <div class="col-4">
-          <img src="product-4.jpg" alt="" />
-          <h4>Fashion Trends</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="product-image-wrap">
+            <img src="product-3.jpg" alt="Maison Silk Blouse" loading="lazy" />
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+            <span class="product-badge sale">Sale</span>
           </div>
-          <p>$50.00</p>
+          <div class="product-info">
+            <h4 class="product-name">Maison Silk Blouse</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span class="rating-count">(42)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$45.00</span>
+              <span class="product-price-old">$60.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="product-image-wrap">
+            <img src="product-4.jpg" alt="Parisian Trench Coat" loading="lazy" />
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Parisian Trench Coat</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+              <span class="rating-count">(31)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$120.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="product-image-wrap">
+            <img src="product-5.jpg" alt="Riviera Sundress" loading="lazy" />
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Riviera Sundress</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+              <span class="rating-count">(15)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$55.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="product-image-wrap">
+            <img src="product-6.jpg" alt="Monaco Evening Set" loading="lazy" />
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Monaco Evening Set</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i>
+              <span class="rating-count">(22)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$89.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="product-image-wrap">
+            <img src="product-7.jpg" alt="Atelier Linen Pants" loading="lazy" />
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Atelier Linen Pants</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+              <span class="rating-count">(37)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$65.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="product-image-wrap">
+            <img src="product-8.jpg" alt="Versailles Jacket" loading="lazy" />
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+            <span class="product-badge sale">Sale</span>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Versailles Jacket</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+              <span class="rating-count">(28)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$95.00</span>
+              <span class="product-price-old">$130.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="product-image-wrap">
+            <img src="product-9.jpg" alt="Belle Cashmere Sweater" loading="lazy" />
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Belle Cashmere Sweater</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+              <span class="rating-count">(19)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$72.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="product-image-wrap">
+            <img src="product-10.jpg" alt="Lyon Denim Collection" loading="lazy" />
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Lyon Denim Collection</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i>
+              <span class="rating-count">(26)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$58.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="product-image-wrap">
+            <img src="product-11.jpg" alt="Provence Wrap Dress" loading="lazy" />
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+            <span class="product-badge">New</span>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Provence Wrap Dress</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+              <span class="rating-count">(33)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$68.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="product-image-wrap">
+            <img src="product-12.jpg" alt="Bordeaux Tailored Suit" loading="lazy" />
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Bordeaux Tailored Suit</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+              <span class="rating-count">(21)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$145.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart"><i class="fa-solid fa-cart-plus"></i></button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-4">
-          <img src="product-5.jpg" alt="" />
-          <h4>Fashion Trends</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$50.00</p>
-        </div>
 
-        <div class="col-4">
-          <img src="product-6.jpg" alt="" />
-          <h4>Fashion Trends</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$50.00</p>
-        </div>
-
-        <div class="col-4">
-          <img src="product-7.jpg" alt="" />
-          <h4>Fashion Trends</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-          <p>$50.00</p>
-        </div>
-        <div class="col-4">
-          <img src="product-8.jpg" alt="" />
-          <h4>Fashion Trends</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$50.00</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <img src="product-9.jpg" alt="" />
-          <h4>Fashion Trends</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$50.00</p>
-        </div>
-
-        <div class="col-4">
-          <img src="product-10.jpg" alt="" />
-          <h4>Fashion Trends</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$50.00</p>
-        </div>
-
-        <div class="col-4">
-          <img src="product-11.jpg" alt="" />
-          <h4>Fashion Trends</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-          </div>
-          <p>$50.00</p>
-        </div>
-        <div class="col-4">
-          <img src="product-12.jpg" alt="" />
-          <h4>Fashion Trends</h4>
-          <div class="rating">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p>$50.00</p>
-        </div>
-      </div>
-
-      
       <div class="page-btn">
-        <span>1</span>
+        <span class="active">1</span>
         <span>2</span>
         <span>3</span>
         <span>4</span>
-        <span>&#8594;</span>
+        <span>&rarr;</span>
       </div>
     </div>
-    <div class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="footer-col-1">
-            <h3>Download Our App</h3>
-            <p>
-              Download App for Android <br />
-              and ios mobile phone
-            </p>
-            <div class="app-logo">
-              <img src="play-store.png" alt="" />
-              <img src="app-store.png" alt="" />
-            </div>
-          </div>
-          <div class="footer-col-2">
-            <img src="logo-white.png" alt="" />
-            <p>
-              Lorem, ipsum dolor sit amet consectetur <br />adipisicing elit.
-              Porro, eum?
-            </p>
-          </div>
-          <div class="footer-col-3">
-            <h3>Useful Links</h3>
-            <ul>
-              <li>Coupons</li>
-              <li>Blog Post</li>
-              <li>Return Policy</li>
-              <li>Join Affiliate</li>
-            </ul>
-          </div>
+  </section>
 
-          <div class="footer-col-4">
-            <h3>Follow us</h3>
-            <ul>
-              <li>Facebook</li>
-              <li>Twitter</li>
-              <li>Instagram</li>
-              <li>YouTube</li>
-            </ul>
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quickViewModal" aria-hidden="true" role="dialog">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close modal">&times;</button>
+      <div class="modal-body">
+        <div class="modal-image">
+          <img src="" alt="Product preview" id="modalImage" />
+        </div>
+        <div class="modal-info">
+          <h3 id="modalTitle"></h3>
+          <div class="product-rating" id="modalRating"></div>
+          <p class="modal-price" id="modalPrice"></p>
+          <p class="modal-description">
+            A premium wardrobe essential crafted with attention to detail and designed
+            for both comfort and sophistication.
+          </p>
+          <button class="btn btn-primary modal-add-cart" type="button">
+            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <h3 class="footer-logo">Wardrobe<span>|</span></h3>
+          <p>Curating premium fashion for the modern individual.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="TikTok" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" aria-label="WhatsApp" class="social-link"><i class="fa-brands fa-whatsapp"></i></a>
           </div>
         </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul class="contact-list">
+            <li><i class="fa-solid fa-envelope"></i> hello@wardrobe.com</li>
+            <li><i class="fa-solid fa-phone"></i> +1 (555) 234-5678</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
         <hr />
-        <p class="copyright">Copyright 2022 - Wardrobe.com</p>
+        <p>&copy; 2026 Wardrobe. All rights reserved.</p>
       </div>
     </div>
-  </body>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="script.js"></script>
+</body>
 </html>
-
-
-
-
-
-

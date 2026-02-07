@@ -1,335 +1,577 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title> Wardrobe|Fashion Trends</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-  <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200&display=swap"
-      rel="stylesheet"
-    />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Wardrobe | Fashion Trends — Premium fashion e-commerce store offering curated collections for the modern wardrobe." />
+  <title>Wardrobe | Fashion Trends</title>
+  <link rel="icon" type="image/png" href="logo-white.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- AOS Animate on Scroll -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <div class="header">
+
+  <!-- ========== NAVIGATION ========== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="Wardrobe Home">
+        <img src="logo-white.png" alt="Wardrobe Logo" class="logo-img" />
+        <span class="logo-text">Wardrobe</span>
+        <span class="logo-separator">|</span>
+        <span class="logo-tagline">Fashion Trends</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="product.html" class="nav-link">Products</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="account.html" class="nav-link">Account</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+
+        <a href="cart.html" class="cart-icon" aria-label="Shopping cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" type="button">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="mobile-nav-link active">Home</a></li>
+        <li><a href="product.html" class="mobile-nav-link">Products</a></li>
+        <li><a href="#about" class="mobile-nav-link">About</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        <li><a href="account.html" class="mobile-nav-link">Account</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <p class="hero-subtitle" data-aos="fade-down" data-aos-delay="200">New Season Collection</p>
+      <h1 class="hero-title">
+        <span class="hero-animated-text" id="heroAnimatedText"></span>
+        <span class="typing-cursor">|</span>
+      </h1>
+      <p class="hero-description" data-aos="fade-up" data-aos-delay="600">
+        Discover curated fashion that defines elegance.<br />
+        Where timeless style meets modern sophistication.
+      </p>
+      <a href="product.html" class="btn btn-primary hero-cta" data-aos="fade-up" data-aos-delay="800">
+        Shop Now
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED PRODUCTS ========== -->
+  <section class="section products-section" id="products">
     <div class="container">
-      <div class="navbar">
-        <div class="logo">
-          <a href="index.html">
-            <img src="logo (1).png" alt="Logo" width="125px"/>
-          </a>
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-badge">Curated Collection</span>
+        <h2 class="section-title">Featured Products</h2>
+        <p class="section-subtitle">Handpicked pieces for the discerning fashion enthusiast</p>
+      </div>
+
+      <div class="product-grid">
+        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="product-image-wrap">
+            <a href="product.html"><img src="product-1.jpg" alt="Elegance Couture Dress" loading="lazy" /></a>
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+            <span class="product-badge">New</span>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Elegance Couture</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+              <i class="fa-regular fa-star"></i>
+              <span class="rating-count">(24)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$50.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
         </div>
-        <nav>
-          <ul id="MenuItems">
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="product-image-wrap">
+            <a href="product.html"><img src="product-2.jpg" alt="Noir Classic Blazer" loading="lazy" /></a>
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Noir Classic Blazer</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <span class="rating-count">(18)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$75.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="product-image-wrap">
+            <a href="product.html"><img src="product-3.jpg" alt="Maison Silk Blouse" loading="lazy" /></a>
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+            <span class="product-badge sale">Sale</span>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Maison Silk Blouse</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <span class="rating-count">(42)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$45.00</span>
+              <span class="product-price-old">$60.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="product-image-wrap">
+            <a href="product.html"><img src="product-4.jpg" alt="Parisian Trench Coat" loading="lazy" /></a>
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Parisian Trench Coat</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <span class="rating-count">(31)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$120.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LATEST PRODUCTS ========== -->
+  <section class="section latest-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-badge">Just Arrived</span>
+        <h2 class="section-title">Latest Products</h2>
+        <p class="section-subtitle">Fresh arrivals to elevate your wardrobe</p>
+      </div>
+
+      <div class="product-grid">
+        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="product-image-wrap">
+            <a href="product.html"><img src="product-5.jpg" alt="Riviera Sundress" loading="lazy" /></a>
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+            <span class="product-badge">New</span>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Riviera Sundress</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <span class="rating-count">(15)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$55.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="product-image-wrap">
+            <a href="product.html"><img src="product-6.jpg" alt="Monaco Evening Set" loading="lazy" /></a>
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Monaco Evening Set</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+              <i class="fa-regular fa-star"></i>
+              <span class="rating-count">(22)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$89.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="product-image-wrap">
+            <a href="product.html"><img src="product-7.jpg" alt="Atelier Linen Pants" loading="lazy" /></a>
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Atelier Linen Pants</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+              <span class="rating-count">(37)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$65.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="product-image-wrap">
+            <a href="product.html"><img src="product-8.jpg" alt="Versailles Jacket" loading="lazy" /></a>
+            <div class="product-overlay">
+              <button class="quick-view-btn" type="button" aria-label="Quick view">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+            <span class="product-badge sale">Sale</span>
+          </div>
+          <div class="product-info">
+            <h4 class="product-name">Versailles Jacket</h4>
+            <div class="product-rating">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <span class="rating-count">(28)</span>
+            </div>
+            <div class="product-bottom">
+              <span class="product-price">$95.00</span>
+              <span class="product-price-old">$130.00</span>
+              <button class="add-to-cart-btn" type="button" aria-label="Add to cart">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-cta" data-aos="fade-up">
+        <a href="product.html" class="btn btn-outline">View All Products <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT / BRAND STORY ========== -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image" data-aos="fade-right">
+          <img src="thumbnail.jpg" alt="About Wardrobe Fashion" loading="lazy" />
+        </div>
+        <div class="about-content" data-aos="fade-left">
+          <span class="section-badge">Our Story</span>
+          <h2 class="section-title left-align">Crafted for the Modern Individual</h2>
+          <p>
+            At Wardrobe, we believe fashion is more than clothing — it is an expression of identity.
+            Every piece in our collection is carefully curated to blend timeless elegance with
+            contemporary design, ensuring you always make a statement.
+          </p>
+          <p>
+            Founded with a passion for quality and an eye for detail, we source from artisan
+            makers and ethical suppliers who share our commitment to excellence and sustainability.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Curated Pieces</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">12K+</span>
+              <span class="stat-label">Happy Clients</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">Countries</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-badge">Testimonials</span>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">Real stories from our valued customers</p>
+      </div>
+
+      <div class="testimonial-grid">
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <i class="fa-solid fa-quote-left testimonial-quote-icon"></i>
+          <p class="testimonial-text">
+            The quality of the pieces is extraordinary. Every item I have purchased has exceeded
+            my expectations. Truly a premium experience from browsing to unboxing.
+          </p>
+          <div class="testimonial-author">
+            <img src="user-1.png" alt="Sean Parker" loading="lazy" />
+            <div>
+              <h4>Sean Parker</h4>
+              <span>Loyal Customer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <i class="fa-solid fa-quote-left testimonial-quote-icon"></i>
+          <p class="testimonial-text">
+            I have been shopping with Wardrobe for over a year now. Their curated collection
+            never disappoints. The attention to detail in every piece is remarkable.
+          </p>
+          <div class="testimonial-author">
+            <img src="user-2.png" alt="Michael Joe" loading="lazy" />
+            <div>
+              <h4>Michael Joe</h4>
+              <span>Fashion Enthusiast</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+          <i class="fa-solid fa-quote-left testimonial-quote-icon"></i>
+          <p class="testimonial-text">
+            From casual wear to evening looks, Wardrobe has it all. The fabrics feel
+            luxurious and the fit is always perfect. Highly recommend to anyone who values style.
+          </p>
+          <div class="testimonial-author">
+            <img src="user-3.png" alt="Kaily Jenner" loading="lazy" />
+            <div>
+              <h4>Kaily Jenner</h4>
+              <span>Style Blogger</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEWSLETTER / CONTACT ========== -->
+  <section class="section newsletter-section" id="contact">
+    <div class="container">
+      <div class="newsletter-wrap" data-aos="zoom-in">
+        <h2>Stay in the Loop</h2>
+        <p>Subscribe to receive exclusive offers, new arrivals, and style inspiration straight to your inbox.</p>
+        <form class="newsletter-form" id="newsletterForm" action="#" method="POST">
+          <div class="newsletter-input-wrap">
+            <input type="email" placeholder="Enter your email address" aria-label="Email address" required />
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <h3 class="footer-logo">Wardrobe<span>|</span></h3>
+          <p>
+            Curating premium fashion for the modern individual. Quality, elegance, and
+            timeless style — delivered to your doorstep.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="TikTok" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" aria-label="WhatsApp" class="social-link"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" aria-label="Pinterest" class="social-link"><i class="fa-brands fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="product.html">Products</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a href="account.html">Account</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
-        </nav>
-        <a href="cart.html">
-          <img src="cart.png" alt="" width="30px"
-            height="30px" /></a>
-        <div id="menu-btn">
-          <img src="menu.png" id="menu-btn">
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Size Guide</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul class="contact-list">
+            <li><i class="fa-solid fa-envelope"></i> hello@wardrobe.com</li>
+            <li><i class="fa-solid fa-phone"></i> +1 (555) 234-5678</li>
+            <li><i class="fa-solid fa-location-dot"></i> 123 Fashion Ave, NY</li>
+          </ul>
         </div>
       </div>
-      <div id="sideNav">
-                <nav>
-                      <ul id="MenuItems">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="">About</a></li>
-                        <li><a href="">Contact</a></li>
-                        <li><a href="account.html">Account</a></li>
-                      </ul>
-                    </nav>
-                </div>
 
-      <div class="row">
-        <div class="col-2">
-          <h1 id="text" onload="typing()"> </h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.<br />
-            Voluptas rerum maiores animi officiis
+      <div class="footer-bottom">
+        <hr />
+        <p>&copy; 2026 Wardrobe. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quickViewModal" aria-hidden="true" role="dialog">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close modal">&times;</button>
+      <div class="modal-body">
+        <div class="modal-image">
+          <img src="" alt="Product preview" id="modalImage" />
+        </div>
+        <div class="modal-info">
+          <h3 id="modalTitle"></h3>
+          <div class="product-rating" id="modalRating"></div>
+          <p class="modal-price" id="modalPrice"></p>
+          <p class="modal-description">
+            A premium wardrobe essential crafted with attention to detail and designed
+            for both comfort and sophistication.
           </p>
-          <a href="" class="btn">Explore Now </a>
-        </div>
-        <div class="col-2">
-          <img src="thumbnail.jpg" alt="" onclick="openImg(this)" id="image"/>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="small-container">
-    <h2 class="title">Featured Products</h2>
-    <div class="row">
-      <div class="col-4">
-        <a href="product-details.html"><img src="product-1.jpg" alt=""/></a>
-        <h4> Fashion Trends</h4>
-        <div class="rating">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-half-o"></i>
-          <i class="fa fa-star-o"></i>
-        </div>
-        <p>$50.00</p>
-      </div>
-      <div class="col-4">
-        <a href="product-details.html"><img src="product-2.jpg" alt=""/></a>
-        <input type="checkbox" id="checkbox" />
-         <h4> Fashion Trends</h4>
-        <div class="rating">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star-o"></i>
-        </div>
-        <p>$50.00</p>
-      </div>
-      <div class="col-4">
-        <a href="product-details.html"><img src="product-3.jpg" alt=""/></a>
-         <h4> Fashion Trends</h4>
-        <div class="rating">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </div>
-        <p>$50.00</p>
-      </div>
-      <div class="col-4">
-        <a href="product-details.html"><img src="product-4.jpg" alt=""/></a>
-         <h4> Fashion Trends</h4>
-        <div class="rating">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-o"></i>
-        </div>
-        <p>$50.00</p>
-      </div>
-    </div>
-
-    <h2 class="title">Latest Products</h2>
-         <div class="row">
-            <div class="col-4">
-               <a href="product-details.html"><img src="product-5.jpg" alt=""/></a>
-               <h4>Fashion Trends</h4>
-               <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-o"></i>
-               </div>
-               <p>$50.00</p>
-            </div>
-            <div class="col-4">
-               <a href="product-details.html"><img src="product-6.jpg" alt=""/></a>
-               <h4>Fashion Trends</h4>
-               <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-half-o"></i>
-                  <i class="fa fa-star-o"></i>
-               </div>
-               <p>$50.00</p>
-            </div>
-            <div class="col-4">
-               <a href="product-details.html"><img src="product-7.jpg" alt=""/></a>
-               <h4>Fashion Trends</h4>
-               <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-half-o"></i>
-               </div>
-               <p>$50.00</p>
-            </div>
-            <div class="col-4">
-               <a href="product-details.html"><img src="product-8.jpg" alt=""/></a>
-               <h4>Fashion Trends</h4>
-               <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-o"></i>
-               </div>
-               <p>$50.00</p>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-4">
-              <a href="product-details.html"><img src="product-9.jpg" alt=""/></a>
-               <h4>Fashion Trends</h4>
-               <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-o"></i>
-               </div>
-               <p>$50.00</p>
-            </div>
-            <div class="col-4">
-               <a href="product-details.html"><img src="product-10.jpg" alt=""/></a>
-               <h4>Fashion Trends</h4>
-               <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-half-o"></i>
-                  <i class="fa fa-star-o"></i>
-               </div>
-               <p>$50.00</p>
-            </div>
-            <div class="col-4">
-               <a href="product-details.html"><img src="product-11.jpg" alt=""/></a>
-               <h4>Fashion Trends</h4>
-               <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-half-o"></i>
-               </div>
-               <p>$50.00</p>
-            </div>
-            <div class="col-4">
-               <a href="product-details.html"><img src="product-12.jpg" alt=""/></a>
-               <h4>Fashion Trends</h4>
-               <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-o"></i>
-               </div>
-               <p>$50.00</p>
-            </div>
-         </div>
-      </div>
-    <div class="testimonial">
-      <div class="small-container">
-        <div class="row">
-          <div class="col-3">
-            <i class="fa fa-quote-left"></i>
-            <p>I really love the roducts from this website,they are really original.</p>
-            <div class="rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <img src="user-1.png" alt="" />
-            <h3>Sean Parker</h3>
-
-          </div>
-          <div class="col-3">
-            <i class="fa fa-quote-left"></i>
-            <p>I really love the roducts from this website,they are really original.</p>
-            <div class="rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <img src="user-2.png" alt="" />
-            <h3>Micheal Joe</h3>
-          </div>
-          <div class="col-3">
-            <i class="fa fa-quote-left"></i>
-            <p>I really love the roducts from this website,they are really original.</p>
-            <div class="rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <img src="user-3.png" alt="" />
-            <h3>Kaily Jenner</h3>
-          </div>
-        
-        </div>
-      </div>
-    </div>
-  <div class="brands">
-    <div class="small-container">
-      <div class="row">
-        <div class="col-5">
-          <img src="logo-godrej.png" alt=""/>
-        </div>
-        <div class="col-5">
-          <img src="logo-oppo.png" alt=""/>
-        </div>
-        <div class="col-5">
-          <img src="logo-paypal.png" alt=""/>
-        </div>
-        <div class="col-5">
-          <img src="logo-philips.png" alt=""/>
-        </div>
-        <div class="col-5">
-          <img src="logo-coca-cola.png" alt=""/>
+          <button class="btn btn-primary modal-add-cart" type="button">
+            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+          </button>
         </div>
       </div>
     </div>
   </div>
-  <div class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="footer-col-1">
-          <h3> Download Our App</h3>
-          <p> Downlaod App for Android <br/>
-          and ios mobile phone</p>
-          <div class="app-logo">
-            <img src="play-store.png" alt=""/>
-            <img src="app-store.png" alt=""/>
-          </div>
-        </div>
-        <div class="footer-col-2">
-          <img src="logo-white.png" alt=""/><br>
-          <p>Logos serve to represent a given organization or company through a visual image that can be easily understood and recognized.</p>
-        </div>
-        <div class="footer-col-3">
-          <h3>Useful Links</h3>
-            <ul>
-              <li>Coupons</li>
-              <li>Blog Post</li>
-              <li>Return Policy</li>
-              <li>Join Affiliate</li>
-            </ul>
-        </div>
-        <div class="footer-col-4">
-          <h3>Follow us</h3>
-            <ul>
-              <li>Facebook</li>
-              <li>Twitter</li>
-              <li>Instagram</li>
-              <li>YouTube</li>
-            </ul>
-        </div>
-      </div>
-      <hr/>
-      <p class="copyright">Copyright 2022 - Wardrobe.com</p>
 
-    </div>
-  </div>
-  
+  <!-- AOS Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
 </body>
-
 </html>
