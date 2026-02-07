@@ -392,15 +392,35 @@ button {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Mobile Menu */
+/* Mobile Menu — Drawer from Left */
 .mobile-menu {
   display: none;
 }
 
 .mobile-menu.open {
   transform: translateX(0);
-  opacity: 1;
   visibility: visible;
+}
+
+/* Drawer overlay — hidden by default */
+.drawer-overlay {
+  display: none;
+}
+
+/* Page content wrapper — base state */
+.page-content {
+  position: relative;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+              border-radius 0.45s ease;
+  transform-origin: center center;
+  z-index: 1;
+  background: var(--bg-primary);
+}
+
+/* Mobile menu header/footer — hidden on desktop */
+.mobile-menu-header,
+.mobile-menu-footer {
+  display: none;
 }
 
 .mobile-nav-list {
@@ -410,9 +430,8 @@ button {
 }
 
 .mobile-nav-link {
-  display: block;
   font-family: var(--font-accent);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -423,12 +442,26 @@ button {
   min-height: 48px;
   display: flex;
   align-items: center;
+  gap: 14px;
+}
+
+.mobile-nav-link i {
+  width: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: color var(--transition);
 }
 
 .mobile-nav-link:hover,
 .mobile-nav-link.active {
   color: var(--accent);
   background: var(--accent-light);
+}
+
+.mobile-nav-link:hover i,
+.mobile-nav-link.active i {
+  color: var(--accent);
 }
 
 /* ============================================================
@@ -1553,23 +1586,98 @@ button {
   }
 
   .mobile-menu {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
     bottom: 0;
+    width: 280px;
+    max-width: 80vw;
     background: var(--bg-secondary);
-    z-index: 1001;
-    padding: 100px 24px 40px;
-    transform: translateX(100%);
-    opacity: 0;
+    z-index: 1100;
+    padding: 0 0 24px;
+    transform: translateX(-100%);
     visibility: hidden;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease,
-                visibility 0.4s ease;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.45s ease;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    border-right: 1px solid var(--border-color);
+  }
+
+  .mobile-menu .mobile-nav-list {
+    flex: 1;
+    padding: 12px 16px;
+  }
+
+  /* Drawer brand header */
+  .mobile-menu-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+  }
+
+  .mobile-menu-brand {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .mobile-menu-brand-sep {
+    color: var(--accent);
+    font-weight: 300;
+    font-size: 1.2rem;
+  }
+
+  /* Drawer footer */
+  .mobile-menu-footer {
+    display: block;
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-color);
+    flex-shrink: 0;
+  }
+
+  .mobile-menu-footer p {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* Drawer overlay */
+  .drawer-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1099;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .drawer-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* "Push content" effect when drawer is open */
+  .page-content.shifted {
+    transform: translateX(260px) scale(0.92);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Header also shifts with content */
+  .site-header.shifted {
+    transform: translateX(260px);
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* Logo — hide separator on smaller tablets */
@@ -2061,9 +2169,11 @@ button {
    ============================================================ */
 body.menu-open {
   overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100%;
+}
+
+/* Prevent content from scrolling while shifted */
+.page-content.shifted {
+  pointer-events: none;
 }
 
 /* ============================================================
@@ -2103,7 +2213,9 @@ body,
 .modal-content,
 .form-container,
 .newsletter-wrap,
-.mobile-menu {
+.mobile-menu,
+.page-content,
+.drawer-overlay {
   transition: background-color 0.4s ease, color 0.3s ease,
               border-color 0.3s ease, box-shadow 0.3s ease;
 }

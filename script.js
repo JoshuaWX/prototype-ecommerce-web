@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var addToCartBtns = document.querySelectorAll(".add-to-cart-btn");
   var cartCountEl   = document.getElementById("cartCount");
   var newsletterForm = document.getElementById("newsletterForm");
+  var pageContent   = document.getElementById("pageContent");
+  var drawerOverlay = document.getElementById("drawerOverlay");
 
   var cartCount = 0;
 
@@ -41,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", handleScroll, { passive: true });
 
   /* ----------------------------------------------------------
-     2. Mobile Menu Toggle
+     2. Mobile Nav Drawer — Push Content Effect
   ---------------------------------------------------------- */
   var scrollPosition = 0;
 
@@ -52,7 +54,11 @@ document.addEventListener("DOMContentLoaded", function () {
     hamburgerBtn.setAttribute("aria-expanded", "true");
     mobileMenu.setAttribute("aria-hidden", "false");
     document.body.classList.add("menu-open");
-    document.body.style.top = "-" + scrollPosition + "px";
+
+    /* Shift page content + header */
+    if (pageContent) pageContent.classList.add("shifted");
+    if (header) header.classList.add("shifted");
+    if (drawerOverlay) drawerOverlay.classList.add("visible");
   }
 
   function closeMobileMenu() {
@@ -61,8 +67,11 @@ document.addEventListener("DOMContentLoaded", function () {
     hamburgerBtn.setAttribute("aria-expanded", "false");
     mobileMenu.setAttribute("aria-hidden", "true");
     document.body.classList.remove("menu-open");
-    document.body.style.top = "";
-    window.scrollTo(0, scrollPosition);
+
+    /* Return page content + header */
+    if (pageContent) pageContent.classList.remove("shifted");
+    if (header) header.classList.remove("shifted");
+    if (drawerOverlay) drawerOverlay.classList.remove("visible");
   }
 
   function toggleMobileMenu() {
@@ -76,6 +85,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (hamburgerBtn) {
     hamburgerBtn.addEventListener("click", toggleMobileMenu);
+  }
+
+  /* Close drawer when overlay is tapped */
+  if (drawerOverlay) {
+    drawerOverlay.addEventListener("click", closeMobileMenu);
   }
 
   /* Close mobile menu when a link is clicked */

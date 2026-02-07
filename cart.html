@@ -47,16 +47,31 @@
         </button>
       </div>
     </div>
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <ul class="mobile-nav-list">
-        <li><a href="index.html" class="mobile-nav-link">Home</a></li>
-        <li><a href="product.html" class="mobile-nav-link">Products</a></li>
-        <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
-        <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
-        <li><a href="account.html" class="mobile-nav-link">Account</a></li>
-      </ul>
-    </div>
   </header>
+
+  <!-- Mobile Nav Drawer (slides from left) -->
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true" aria-label="Mobile navigation">
+    <div class="mobile-menu-header">
+      <span class="mobile-menu-brand">Wardrobe</span>
+      <span class="mobile-menu-brand-sep">|</span>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="product.html" class="mobile-nav-link"><i class="fa-solid fa-bag-shopping"></i> Products</a></li>
+      <li><a href="index.html#about" class="mobile-nav-link"><i class="fa-solid fa-circle-info"></i> About</a></li>
+      <li><a href="index.html#contact" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+      <li><a href="account.html" class="mobile-nav-link"><i class="fa-solid fa-user"></i> Account</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <p>&copy; 2026 Wardrobe</p>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- Page Content Wrapper (shifts on drawer open) -->
+  <div class="page-content" id="pageContent">
 
   <!-- Cart Content -->
   <div class="small-container cart-page">
@@ -162,6 +177,8 @@
       </div>
     </div>
   </footer>
+
+  </div><!-- /.page-content -->
 
   <script src="script.js"></script>
 </body>
