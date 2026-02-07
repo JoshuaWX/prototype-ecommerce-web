@@ -618,6 +618,17 @@ button {
 /* ============================================================
    PRODUCT CARDS
    ============================================================ */
+
+/* Carousel wrapper — invisible on desktop, layout container on mobile */
+.product-carousel-wrap {
+  position: relative;
+}
+
+/* Arrows — hidden on desktop */
+.carousel-arrow {
+  display: none;
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
@@ -1579,6 +1590,130 @@ button {
     display: none;
   }
 
+  /* ---- Mobile Product Carousel ---- */
+  .product-carousel-wrap {
+    position: relative;
+    overflow: visible;
+  }
+
+  .product-grid {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    gap: 14px;
+    padding: 4px 2px 16px;
+    scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* IE/Edge  */
+  }
+
+  .product-grid::-webkit-scrollbar {
+    display: none;                  /* Chrome/Safari */
+  }
+
+  .product-grid > .product-card {
+    flex: 0 0 170px;
+    min-width: 170px;
+    max-width: 170px;
+    scroll-snap-align: start;
+    border-radius: var(--radius-sm);
+  }
+
+  .product-grid > .product-card .product-image-wrap {
+    aspect-ratio: 3 / 4;
+  }
+
+  .product-grid > .product-card .product-info {
+    padding: 12px;
+  }
+
+  .product-grid > .product-card .product-name {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .product-grid > .product-card .product-rating {
+    margin-bottom: 8px;
+  }
+
+  .product-grid > .product-card .product-rating .fa-star,
+  .product-grid > .product-card .product-rating .fa-star-half-stroke,
+  .product-grid > .product-card .product-rating .fa-regular {
+    font-size: 0.65rem;
+  }
+
+  .product-grid > .product-card .rating-count {
+    font-size: 0.6rem;
+  }
+
+  .product-grid > .product-card .product-price {
+    font-size: 0.9rem;
+  }
+
+  .product-grid > .product-card .product-price-old {
+    font-size: 0.7rem;
+  }
+
+  .product-grid > .product-card .add-to-cart-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+
+  .product-grid > .product-card .product-badge {
+    font-size: 0.55rem;
+    padding: 3px 10px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .product-grid > .product-card .quick-view-btn {
+    font-size: 0.6rem;
+    padding: 8px 14px;
+    gap: 5px;
+  }
+
+  /* Carousel navigation arrows */
+  .carousel-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    opacity: 0.85;
+  }
+
+  .carousel-arrow:active {
+    transform: translateY(-50%) scale(0.92);
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  .carousel-arrow-left {
+    left: -6px;
+  }
+
+  .carousel-arrow-right {
+    right: -6px;
+  }
+
   /* Footer — center-align on mobile */
   .footer-grid {
     text-align: center;
@@ -1722,20 +1857,27 @@ button {
 
 /* ---------- Small Mobile (≤480px) ---------- */
 @media (max-width: 480px) {
-  /* Product card — prevent images from being too small */
-  .product-image-wrap {
+  /* Carousel cards — slightly narrower on very small screens */
+  .product-grid > .product-card {
+    flex: 0 0 155px;
+    min-width: 155px;
+    max-width: 155px;
+  }
+
+  /* Standalone product pages (non-carousel) — keep readable */
+  .page-padding .product-image-wrap {
     aspect-ratio: 4 / 5;
   }
 
-  .product-info {
+  .page-padding .product-info {
     padding: 14px;
   }
 
-  .product-name {
+  .page-padding .product-name {
     font-size: 0.85rem;
   }
 
-  .product-price {
+  .page-padding .product-price {
     font-size: 0.95rem;
   }
 

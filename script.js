@@ -350,7 +350,50 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ----------------------------------------------------------
-     8. AOS (Animate on Scroll) Initialization
+     8. Mobile Product Carousel — Arrow Navigation
+  ---------------------------------------------------------- */
+  var carouselWraps = document.querySelectorAll(".product-carousel-wrap");
+
+  carouselWraps.forEach(function (wrap) {
+    var grid = wrap.querySelector(".product-grid");
+    var leftBtn = wrap.querySelector(".carousel-arrow-left");
+    var rightBtn = wrap.querySelector(".carousel-arrow-right");
+
+    if (!grid || !leftBtn || !rightBtn) return;
+
+    /* Scroll distance = roughly one card width + gap */
+    var scrollAmount = 184;
+
+    leftBtn.addEventListener("click", function () {
+      grid.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    });
+
+    rightBtn.addEventListener("click", function () {
+      grid.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
+
+    /* Update arrow visibility based on scroll position */
+    function updateArrows() {
+      if (window.innerWidth > 768) return;
+
+      var maxScroll = grid.scrollWidth - grid.clientWidth;
+
+      leftBtn.style.opacity = grid.scrollLeft <= 4 ? "0" : "0.85";
+      leftBtn.style.pointerEvents = grid.scrollLeft <= 4 ? "none" : "auto";
+
+      rightBtn.style.opacity = grid.scrollLeft >= maxScroll - 4 ? "0" : "0.85";
+      rightBtn.style.pointerEvents = grid.scrollLeft >= maxScroll - 4 ? "none" : "auto";
+    }
+
+    grid.addEventListener("scroll", updateArrows, { passive: true });
+    window.addEventListener("resize", updateArrows, { passive: true });
+
+    /* Initial check after layout settles */
+    setTimeout(updateArrows, 300);
+  });
+
+  /* ----------------------------------------------------------
+     9. AOS (Animate on Scroll) Initialization
   ---------------------------------------------------------- */
   if (typeof AOS !== "undefined") {
     AOS.init({
@@ -365,7 +408,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ----------------------------------------------------------
-     9. Smooth Scroll for Anchor Links
+     10. Smooth Scroll for Anchor Links
   ---------------------------------------------------------- */
   var anchorLinks = document.querySelectorAll('a[href^="#"]');
 
@@ -384,7 +427,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* ----------------------------------------------------------
-     10. Active Nav Link on Scroll (Intersection Observer)
+     11. Active Nav Link on Scroll (Intersection Observer)
   ---------------------------------------------------------- */
   var sections = document.querySelectorAll("section[id]");
   var navLinks = document.querySelectorAll(".nav-link");
